@@ -5,7 +5,7 @@
 (\.\d+)* : period followed by one or more digits 0 or more times
 (e\d+)?$ : e followed by one or more digits 0 or 1 time at the end of the pattern
 
-2. 1?\s?\(?([0-9]{3})\)?[-\s]?[0-9]{3}[-\s]?[0-9]{4}
+2. /1?\s?\(?([0-9]{3})\)?[-\s]?[0-9]{3}[-\s]?[0-9]{4}/
 
 1?\s? : "1" 0 or 1 times followed by whitespace 0 or 1 times
 \(? : open parantheses 0 or 1 times
@@ -15,3 +15,5 @@
 [0-9]{3} : 3 digits 
 [-\s]? : "-" or whitespace 0 or 1 times
 [0-9]{4} : 4 digits 
+
+3. /((\w+[.]?)+)\+?\w*@\w+(?:\.\w+)+/
