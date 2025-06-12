@@ -103,11 +103,10 @@ function problem5() {
             let bitsToFlip = str.slice(0, lastIndex)
             let bitsToKeep = str.slice(lastIndex)
 
-            //flipt bits by using replaceAll, using x and y as placeholders
+            //flip bits by using replaceAll, using x and y as placeholders
             newStr = bitsToFlip.replaceAll(/1/g, "x")
-            newStr = newStr.replaceAll(/0/g, "y")
+            newStr = newStr.replaceAll(/0/g, "1")
             newStr = newStr.replaceAll(/x/g, "0")
-            newStr = newStr.replaceAll(/y/g, "1")
 
             solution += newStr + bitsToKeep + ' '
         }
