@@ -177,7 +177,6 @@ function readTxt(fileName) {
         array.push(data);
     });
 
-    //return array;
 }
 
 
@@ -186,25 +185,45 @@ function readTxt(fileName) {
     //Are to thick but have even thickness (i.e. >>=====>)
     //Have to many fletchings (i.e. >>>----->)
 function problem7() {
+    const fs = require('node:fs');
+    
     const goodArrow = /^(?:>{2})-{3,5}(?:>$)/
     const arrowToFix = /^(?:>{2,})(-{3,5}|={3,5})(?:>$)/
+    let solution = ''
 
-    input_array = ['>>---->', '>>>--->', '>>-=--->', '>>--->', '>>-----D', '>>====>', '>>>==>', '>>===---==>']
-    output_array = []
-
-    for (arrow of input_array) {
-        if (goodArrow.test(arrow)) {
-            output_array.push(arrow)
+    fs.readFile('problem2-2.txt', 'utf8', (err, data) => {
+        if (err) {
+          console.error(err);
+          return;
         }
-        else if (arrowToFix.test(arrow)){
-            //fix arrow
-            arrow = arrow.replace(/>+/, '>>')       //clip fletchling
-            arrow = arrow.replaceAll(/=/g, '-')    //thin arrow
 
-            output_array.push(arrow)
+        let inputSplit = data.split('\n')
+        for (arrow of inputSplit) {
+            
+            if (goodArrow.test(arrow)) {
+                solution += arrow + '\n'
+            }
+            else if (arrowToFix.test(arrow)){
+                //fix arrow
+                arrow = arrow.replace(/>+/, '>>')       //clip fletchling
+                arrow = arrow.replaceAll(/=/g, '-')    //thin arrow
+    
+                solution += arrow + '\n'
+            }
         }
-    }
 
-    console.log(output_array)
+        //write to file        
+        fs.writeFile('solution2-2.txt', solution, err => {
+            if (err) {
+            console.error(err);
+            } else {
+            // file written successfully
+            }
+        });
+
+        
+    });
 
 }
+
+problem7()
