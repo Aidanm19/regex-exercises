@@ -13,3 +13,21 @@ function problem1() {
 
     console.log(problem1_solution)
 }
+
+function problem2() {
+
+    let input = '01010000 00000101 11010001 01101111'
+    let solution = '';
+
+    let inputSplit = input.split(/\s/)
+
+    for (str of inputSplit) {
+        let index = (str.match(/1/))['index'] + 1
+        solution = solution + String(index) + ' '
+    }
+
+    console.log(solution)
+
+}
+
+problem2()
