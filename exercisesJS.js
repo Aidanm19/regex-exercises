@@ -113,7 +113,7 @@ function problem5() {
     console.log(solution)
 
 }
-problem5()
+//problem5()
 
 //Problem 2.1
 //Filter out bad arrows
@@ -222,16 +222,20 @@ function problem7() {
 function problem8() {
     const fs = require('node:fs');
 
-    //const pattern;
-
     fs.readFile('problem3-test.txt', 'utf8', (err, data) => {
         if (err) {
           console.error(err);
           return;
         }
 
-        console.log([...data.matchAll(/(?<=\[)/g)])
+        let inputSplit = data.split(/(?=\[)/)   //split at first [, but include it
+        for (str of inputSplit) {
+
+            const emailPrefixRegex = /(?<emailPrefix>\w+[.-_]?\w+[.-_]?\w+[.-_]?\w*)@/
+            console.log(emailPrefixRegex.exec(str))
+        }
     });
 
 }
 
+problem8()
