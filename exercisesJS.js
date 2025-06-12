@@ -120,4 +120,86 @@ function problem5() {
 
 }
 
-problem5()
+
+//Problem 6
+//Filter out bad arrows
+//Arrows must be: 
+    //consisting only of dashes
+    //a sharp arrow head (end with >) 
+    //fletchings that are two units long (begin with >>)
+    //total length between 6 and 8 units (inclusive)
+function problem6() {
+
+    //let input = String(fetchAndStoreText('https://regexercises.deno.dev/x/2.1/input'))
+
+    let input = ">>---->\n>>>--->\n>>====>"
+    let inputSplit = input.split('\n')
+
+    let badArrows = ''
+    const pattern = /^(?:>{2})-{3,5}(?:>$)/
+
+    let lineNumber = 1
+    for (str of inputSplit) {
+
+        let isGoodArrow = pattern.test(str)
+        if (!isGoodArrow) {
+            badArrows += lineNumber + ' '
+        }
+
+        lineNumber++
+    }
+
+    console.log(badArrows)
+
+}
+
+//problem6()
+
+
+//helper function for problem 6
+async function fetchAndStoreText(url) {
+    try {
+      const response = await fetch(url);
+  
+      if (!response.ok) {
+        throw new Error(`status: ${response.status}`);
+      }
+      const text = await response.text();
+      return text;
+    } 
+    catch (error) {
+
+        console.error("Error fetching text:", error);
+        return null;
+    }
+}
+
+//Accept good arrows
+//Fix arrows that:
+    //Are to thick but have even thickness (i.e. >>=====>)
+    //Have to many fletchings (i.e. >>>----->)
+function problem7() {
+    const goodArrow = /^(?:>{2})-{3,5}(?:>$)/
+    const arrowToFix = /^(?:>{2,})(-{3,5}|={3,5})(?:>$)/
+
+    input_array = ['>>---->', '>>>--->', '>>-=--->', '>>--->', '>>-----D', '>>====>', '>>>==>', '>>===---==>']
+    output_array = []
+
+    for (arrow of input_array) {
+        if (goodArrow.test(arrow)) {
+            output_array.push(arrow)
+        }
+        else if (arrowToFix.test(arrow)){
+            //fix arrow
+            arrow = arrow.replace(/>+/, '>>')       //clip fletchling
+            arrow = arrow.replaceAll(/=/g, '-')    //thin arrow
+
+            output_array.push(arrow)
+        }
+    }
+
+    console.log(output_array)
+
+}
+
+problem7()
