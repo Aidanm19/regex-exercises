@@ -130,27 +130,32 @@ function problem5() {
     //fletchings that are two units long (begin with >>)
     //total length between 6 and 8 units (inclusive)
 function problem6() {
-
-    //let input = ">>---->\n>>>--->\n>>====>"
-
-    let input = readTxt('problem2-1.txt')
-    let inputSplit = input.split('\n')
-
+    const fs = require('node:fs');
+    let array = [];
     let badArrows = ''
     const pattern = /^(?:>{2})-{3,5}(?:>$)/
 
-    let lineNumber = 1
-    for (str of inputSplit) {
-
-        let isGoodArrow = pattern.test(str)
-        if (!isGoodArrow) {
-            badArrows += lineNumber + ' '
+    fs.readFile('problem2-1.txt', 'utf8', (err, data) => {
+        if (err) {
+          console.error(err);
+          return;
         }
 
-        lineNumber++
-    }
+        let inputSplit = data.split('\n')
 
-    console.log(badArrows)
+        let lineNumber = 1
+        for (str of inputSplit) {
+
+            let isGoodArrow = pattern.test(str)
+            if (!isGoodArrow) {
+                badArrows += lineNumber + ' '
+            }
+
+            lineNumber++
+        }
+
+        console.log(badArrows)
+    });
 
 }
 
@@ -172,7 +177,7 @@ function readTxt(fileName) {
         array.push(data);
     });
 
-    return array;
+    //return array;
 }
 
 
