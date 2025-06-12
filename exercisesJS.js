@@ -1,4 +1,4 @@
-//Problem 1
+//Problem 1.1
 //Replace any one-like characters (iIl|!/) with the digit 1, and any zero-like characters (oO@Θθ) with the digit 0.
 function problem1() {
 
@@ -15,7 +15,7 @@ function problem1() {
 }
 
 
-//Problem 2
+//Problem 1.2
 //Provide a list of the 1-based indices of the left-most 1 of each bite in the source data
 function problem2() {
 
@@ -33,7 +33,7 @@ function problem2() {
 }
 
 
-//Problem 3
+//Problem 1.3
 //Provide a list of the 1-based indices of the right-most 1 of each bite in the source data
 function problem3() {
 
@@ -53,7 +53,7 @@ function problem3() {
 }
 
 
-//Problem 4
+//Problem 1.4
 //Remove all of the even bytes from the source data
 function problem4() {
 
@@ -78,7 +78,7 @@ function problem4() {
 }
 
 
-//Problem 5
+//Problem 1.5
 //Get absolute value of each byte
 function problem5() {
 
@@ -122,7 +122,7 @@ function problem5() {
 }
 
 
-//Problem 6
+//Problem 2.1
 //Filter out bad arrows
 //Arrows must be: 
     //consisting only of dashes
@@ -179,7 +179,7 @@ function readTxt(fileName) {
 
 }
 
-
+//Problem 2.2
 //Accept good arrows
 //Fix arrows that:
     //Are to thick but have even thickness (i.e. >>=====>)
@@ -220,10 +220,6 @@ function problem7() {
             // file written successfully
             }
         });
-
-        
     });
 
 }
-
-problem7()
