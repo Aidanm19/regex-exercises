@@ -33,28 +33,14 @@ function problem3() {
 
 //Problem 1.4
 //Remove all of the even bytes from the source data
+    //if it ends with a 1 it's odd and if it ends with a 0 it's even
 function problem4() {
 
-    //if it ends with a 1 it's odd and if it ends with a 0 it's even
-
     let input = '00100001 01001100 10100011 11010010 11011011 01010000 10001001 00110110 00100001 11001010 11010001 10111001 10111001 00000110 11000110 10100000 11010100 10000100 00010000 00011110 00111011 11011001 11011110 11010100 01000000 10101011 10000100 01110111 11110110 10011100 11111100 01001101 10000011 11010000 10011111 01101101 01101100 01101011 01011001 11110010 11010011 00101001 01111101 01011110 10010111 01100110 10011101 10101001 11010011 11011010 11111111 00111100 10100000 11110100 10011111 00101101 01011101 00100100 00000010 10011011 10010111 01000010 10001110 00011010 10010111 00100101 11100000 00101110 11010001 10100101 10010111 01100111 00101010 11010011 10001110 01100011 01000111 11001101 01100100 01111111 11001011 11101010 01001110 11101111 00010101 01100001 11001110 00001010 10101111 01101100 01100001 01110111 11100101 10010111 01011101 00101110 10011101 11011111 10110000 01000101'
-    //let input = '01010000 00000101 11010010 01101111'
-    let solution = ''
 
-    let inputSplit = input.split(/\s/)
-
-    //better regex implementation
-    for (str of inputSplit) {
-        const pattern = /[01]{7}(?<lastBit>[01])/
-        let lastBit = pattern.exec(str).groups.lastBit
-        if (lastBit === '1') {
-            solution += str + ' '
-        }
-    }
-
-    console.log(solution)
+    //replace all even bytes (bytes ending with 0) with nothing, then replace all whitespaces with a single whitespace
+    return input.replaceAll(/[01]{7}[0]/g, '').replaceAll(/\s+/g, " ")
 }
-//problem4()
 
 //Problem 1.5
 //Get absolute value of each byte
@@ -220,7 +206,7 @@ function problem8() {
 //Main function to call others
 function main() {
 
-    console.log(problem3())
+    console.log(problem4())
 
 }
 
