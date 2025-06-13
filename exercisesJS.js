@@ -1,4 +1,7 @@
 //Problem 1.1
+
+const { mainModule } = require('node:process');
+
 //Replace any one-like characters (iIl|!/) with the digit 1, and any zero-like characters (oO@Θθ) with the digit 0.
 function problem1() {
 
@@ -20,16 +23,12 @@ function problem1() {
 function problem2() {
     
     let input = '00100001 01001100 10100011 11010010 11011011 01010000 10001001 00110110 00100001 11001010 11010001 10111001 10111001 00000110 11000110 10100000 11010100 10000100 00010000 00011110 00111011 11011001 11011110 11010100 01000000 10101011 10000100 01110111 11110110 10011100 11111100 01001101 10000011 11010000 10011111 01101101 01101100 01101011 01011001 11110010 11010011 00101001 01111101 01011110 10010111 01100110 10011101 10101001 11010011 11011010 11111111 00111100 10100000 11110100 10011111 00101101 01011101 00100100 00000010 10011011 10010111 01000010 10001110 00011010 10010111 00100101 11100000 00101110 11010001 10100101 10010111 01100111 00101010 11010011 10001110 01100011 01000111 11001101 01100100 01111111 11001011 11101010 01001110 11101111 00010101 01100001 11001110 00001010 10101111 01101100 01100001 01110111 11100101 10010111 01011101 00101110 10011101 11011111 10110000 01000101'
-    let solution = '';
+    //let input = '01010000 00000101 11010001 01101111'
 
-    let inputSplit = input.split(/\s/)
-
-    for (str of inputSplit) {
-        //let index = (str.match(/1/))['index'] + 1
-        //solution = solution + String(index) + ' '
-    }
-
+    //split input at spaces to get each byte, match the first "1" and get the index and add 1, map this to a array and then join
+    let solution = input.split(/\s/).map(str => str.match(/1/)['index'] + 1).join(" ")
     console.log(solution)
+    return 
 }
 
 
@@ -231,11 +230,13 @@ function problem8() {
         let inputSplit = data.split(/(?=\[)/)   //split at first [, but include it
         for (str of inputSplit) {
 
-            const emailPrefixRegex = /(?<emailPrefix>\w+[.-_]?\w+[.-_]?\w+[.-_]?\w*)@/
+            const emailPrefixRegex = /(?<emailPrefix>(\w+([.-]|\w*))*)@/
             console.log(emailPrefixRegex.exec(str))
         }
     });
 
 }
 
-problem8()
+//problem8()
+
+problem2()
