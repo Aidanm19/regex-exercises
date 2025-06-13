@@ -199,6 +199,14 @@ function problem7() {
 function problem8() {
     const fs = require('node:fs');
 
+    const emailPrefixRegex = /(?<emailPrefix>\w+([.-]\w*)*)@/
+    const uidRegex = /\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/
+    const hexRegex = /0x\w{12}/
+    const timestamp = /\[\]/
+
+    const userID = /\w+/
+
+
     fs.readFile('problem3-test.txt', 'utf8', (err, data) => {
         if (err) {
           console.error(err);
@@ -207,10 +215,7 @@ function problem8() {
 
         let inputSplit = data.split(/(?=\[)/)   //split at first [, but include it
         for (str of inputSplit) {
-
-            const emailPrefixRegex = /(?<emailPrefix>(\w+([.-]|\w*))*)@/
-            const uid = /\w{36}/
-            const hex = /0x\w*/
+            
             console.log(emailPrefixRegex.exec(str))
         }
     });
